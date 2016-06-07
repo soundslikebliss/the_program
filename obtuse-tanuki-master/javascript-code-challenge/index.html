@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Code Challenge</title>
+</head>
+<body>
+
+    <script>
+        var valid_characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'Z', 'N', 'L', 'Q', 'R'];
+
+
+        // for( i = 0; i < valid_characters.length; i++) {
+            // var status = valid_characters.includes('p') ? 'VALID' : 'INVALID';
+            // console.log(status);
+        // }
+
+        function split_argument(arg) {
+            var argument_strings = arg.split(" ");
+            console.log(argument_strings);
+        }
+
+
+        function check_validity(arg) {
+            var validity = valid_characters.includes(arg) ? 'VALID' : 'INVALID';
+            alert(validity);
+        }
+
+
+        split_argument('ab cd ef');
+
+        check_validity('a');
+
+
+        console.log(valid_characters);
+    </script>
+</body>
+</html>

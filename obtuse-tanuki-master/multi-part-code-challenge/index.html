@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Multi Part</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+</head>
+<body>
+	<h2>Prime Numbers</h2>
+	<button onclick="getPrimes(100)">Find Prime Numbers</button>
+	<div id="primeNumbers"></div>
+	<hr>
+	<h2>Blockquotes?</h2>
+	<p contenteditable="true">This is an editable paragraph.</p>
+	<p contenteditable="true">This is an editable paragraph.</p>
+	<p contenteditable="true">This is an editable paragraph.</p>
+	<button onclick="makeBlockquote()">Change contenteditable paragraphs<br /> to blockquotes</button>
+	<hr>
+	<h2>Vehicles</h2>
+	<form>
+	  Enter amounts for vehicle types<br>
+	  <input type="text" placeholder="sports cars" name="sport"><br>
+	  <input type="text" placeholder="family cars" name="family"><br>
+	  <input type="text" placeholder="trucks" name="truck"><br>
+	  <input type="text" placeholder="mini vans" name="mini"><br>
+	  <input type="text" placeholder="cargo vans" name="cargo"><br>
+	  Cargo weight:<br>
+	  <input type="text" name="weight">
+	  <br />
+	  <input type="submit" value="Submit">
+	</form>
+	<script>
+	
+		var primes = [];
+
+		function getPrimes(arg) {
+			for (var i = 1; i <= arg; i++) {
+				var prime = true;
+
+				for (var j = 2; j <= i; j++) {
+					// if 2 goes into 4 with no remainder and 2 is not 4: not a prime 
+					if (i % j === 0 && i !== j ) {
+						prime = false;
+					}
+				}
+
+				prime ? primes.push(i) : '';
+				prime ? console.log(i) : '';
+
+			}
+			$("#primeNumbers").text(primes);
+		}
+
+
+		// replace editable paragraphs with blockquotes
+		function makeBlockquote() {
+			$('p').attr('contenteditable', 'true').replaceWith('blockquote<br />');
+		}
+
+
+		// VEHICLES
+		sportsCap = 100;
+		familyCap = 300;
+		truckCap = 1500;
+		miniCap = 200;
+		cargoCap = 800;
+		
+		weight = 600;
+
+		numSports = 2;
+		numFamily = 1;
+		numTruck = 0;
+		numMini = 0;
+		numCargo = 0;
+
+
+		function leftOver() {
+			sportsTotal = numSports * sportsCap;
+			familyTotal = numFamily * familyCap;
+			truckTotal = numTruck * truckCap;
+			miniTotal = numMini * miniCap;
+			cargoTotal = numCargo * cargoCap;
+
+			var allVehicles = sportsTotal + familyTotal + truckTotal + miniTotal + cargoTotal;
+
+			var remains = weight - allVehicles;
+			return remains;
+		} 
+
+		console.log(leftOver(2), 'left over');
+
+	</script>
+</body>
+</html>

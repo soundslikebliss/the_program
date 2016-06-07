@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Card Shuffle</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+	<button onclick="sortDeck(deck)">Sort Deck</button>
+	<button onclick="shuffleDeck(deck)">Shuffle Deck</button>
+	<script>
+		
+	 var ranks = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"];
+	 var suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
+	 var deck = [];
+
+	 // assemble deck
+	 for (var i = 0; i < suits.length; i++) {
+	 	for (var j = 0; j < ranks.length; j++) {
+	 		console.log(ranks[j] + ' of ' + suits[i]);
+	 		deck.push(ranks[j] + ' of ' + suits[i]);
+	 	}
+	 }
+	 console.log(deck);
+
+
+	 // SORT numerically
+	 function sortDeck(arg) {
+	 	var sorted = _.sortBy(arg, function(a, b) {
+	 		return a - b;
+	 	});
+	 	document.getElementById("container").innerHTML = sorted;
+	 	console.log(sorted);
+	 };
+
+	 // SHUFFLE
+	 function shuffleDeck(arg) {
+	 	var shuffled = _.shuffle(arg);
+	 	document.getElementById("container").innerHTML = shuffled;
+		console.log(shuffled);
+	 };
+
+
+	</script>
+</body>
+</html>
